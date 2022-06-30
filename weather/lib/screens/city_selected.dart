@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weather/model/city.dart';
+import 'package:weather/screens/home_screen.dart';
 import 'package:weather/utilities/constants.dart';
 
 class CitySelected extends StatefulWidget {
@@ -73,7 +74,9 @@ class _CitySelectedState extends State<CitySelected> {
               );
             }),
         floatingActionButton: FloatingActionButton(
-          onPressed: (){},
+          onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
+          },
           backgroundColor: kSecondaryColor,
           child: const Icon(Icons.pin_drop),
         ),
