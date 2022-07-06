@@ -17,7 +17,6 @@ class _CitySelectedState extends State<CitySelected> {
 
   @override
   Widget build(BuildContext context) {
-    print(cities);
     print('rebuild');
     return SafeArea(
       top: true,

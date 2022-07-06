@@ -4,6 +4,7 @@ import 'package:weather/utilities/constants.dart';
 
 class WelcomeScreen extends StatelessWidget {
 
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
