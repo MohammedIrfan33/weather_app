@@ -9,7 +9,8 @@ import 'package:weather/utilities/constants.dart';
      this.isWeekResult= false,
      this.color =Colors.grey,
      this.isHeading = true,
-
+     this.isToday =false,
+     this.isDay = false,
      Key? key
    }) : super(key: key);
 
@@ -19,6 +20,9 @@ import 'package:weather/utilities/constants.dart';
    final String textResult;
    final  bool isWeekResult ;
    final bool isHeading;
+   final bool isToday;
+   final bool isDay;
+
 
 
    @override
@@ -28,8 +32,9 @@ import 'package:weather/utilities/constants.dart';
        children: [
          Text(
            text,
+           textAlign: TextAlign.center,
            style: TextStyle(
-               color: color,
+               color: isToday || isDay ? Colors.white : color ,
                fontSize: 12.0
            ),
          ),
@@ -42,20 +47,22 @@ import 'package:weather/utilities/constants.dart';
          :
          Container(
            padding: const EdgeInsets.all(10.0),
-           margin: EdgeInsets.symmetric(vertical: 10.0),
+           margin: const  EdgeInsets.symmetric(vertical: 10.0),
            width: 60.0,
            height: 60.0,
            decoration: BoxDecoration(
              borderRadius: BorderRadius.circular(15.0),
              color: kCardItemsContainerColor,
-
            ),
            child: Image.asset(image),
          ),
 
          Text(
            textResult,
-           style: kCardItemsTextResultStyle
+           style: TextStyle(
+               color: isToday || isDay ? Colors.white : color,
+               fontWeight: FontWeight.w600
+           )
          )
 
        ],

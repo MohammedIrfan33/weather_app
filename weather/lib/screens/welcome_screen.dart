@@ -10,7 +10,7 @@ class WelcomeScreen extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 20.0),
+        padding: const EdgeInsets.symmetric(horizontal: 20.0),
         height: size.height,
         width: size.width,
         color: kPrimaryColor.withOpacity(.5),
@@ -21,7 +21,8 @@ class WelcomeScreen extends StatelessWidget {
             const SizedBox(height: 60,),
             ElevatedButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => CitySelected()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const  CitySelected()));
+
               },
               style: ElevatedButton.styleFrom(
                 padding: EdgeInsets.symmetric(horizontal: size.width*.25,vertical: 15.0),

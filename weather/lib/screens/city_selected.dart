@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weather/model/city.dart';
-import 'package:weather/screens/home_screen.dart';
+import 'package:weather/screens/home/home_screen.dart';
 import 'package:weather/utilities/constants.dart';
 
 class CitySelected extends StatefulWidget {
@@ -17,7 +17,6 @@ class _CitySelectedState extends State<CitySelected> {
 
   @override
   Widget build(BuildContext context) {
-    print('rebuild');
     return SafeArea(
       top: true,
       child: Scaffold(
@@ -42,7 +41,7 @@ class _CitySelectedState extends State<CitySelected> {
                   dense: true,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(6.0),
-                    side: BorderSide(
+                    side: const BorderSide(
                       color: Colors.white,
                       width: 2.0,
                     ),
@@ -59,7 +58,6 @@ class _CitySelectedState extends State<CitySelected> {
                     setState(() {
                       cities[index].isSelected = !cities[index].isSelected;
                       selectedCity = City.getSelectedCities();
-                      print(selectedCity.length);
                     });
                   },
                   title: Text(
@@ -73,8 +71,26 @@ class _CitySelectedState extends State<CitySelected> {
               );
             }),
         floatingActionButton: FloatingActionButton(
-          onPressed: (){
-            Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
+          onPressed: () {
+            setState(() {
+              selectedCity.isEmpty
+                  ? showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                        title: Text('Please select cities you wanted'),
+                        actions: [
+                          TextButton(
+                              onPressed: () => Navigator.pop(context),
+                              child: const Text(
+                                'Ok',
+                                style: kNext3DaysStyle,
+                              ))
+                        ],
+                      ),
+                    )
+                  : Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => HomeScreen()));
+            });
           },
           backgroundColor: kSecondaryColor,
           child: const Icon(Icons.pin_drop),
